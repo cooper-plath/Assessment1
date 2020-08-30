@@ -8,21 +8,22 @@ GitHub URL:
 
 def main():
     print("Travel Tracker 1.0 - by Cooper Plath")
-    Menu_Input = Menu()
-    print(Menu())
+    Menu_Input = Display_Menu()
+    print(Menu_Input)
 
 
-def Menu():
-    print("""L - List Places
-    A - Add new place
-    M - Mark a place as visited
-    Q - Quit""")
-    """
-    
-    """
-    Menu_Input = str(input())
-    while Menu_Input != "Q":
-        return Menu_Input
+def Display_Menu():
+    print(""" Menu:  
+ L - List Places
+ A - Add new place
+ M - Mark a place as visited
+ Q - Quit""")
+
+    Menu_Input = str(input(" >>> "))
+    while Menu_Input.isalpha() == False:
+        print("Invalid")
+        Menu_Input = str(input(" >>> "))
+    return Menu_Input.upper()
 
 
 
