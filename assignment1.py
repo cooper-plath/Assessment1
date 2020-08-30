@@ -9,7 +9,23 @@ GitHub URL:
 def main():
 
     print("Travel Tracker 1.0 - by Cooper Plath")
+
     Menu_Input = Display_Menu()
+    """Run until the user presses Q"""
+    while Menu_Input != "Q":
+        # List places
+        if Menu_Input == "L":
+            print("List Places")
+        # Add new place
+        elif Menu_Input == "A":
+            print("Add new place")
+        # Mark a place as visited
+        elif Menu_Input == "M":
+            print("Mark a place as visited")
+    else:
+        print(f"{Read_Place_File()} places loaded from places.csv")
+        print("Have a nice day :)")
+
 
 
 
@@ -27,8 +43,8 @@ def Read_Place_File():
 
 
 def Display_Menu():
-    File_Amount = Read_Place_File()
-    print(f" {File_Amount} places loaded from places.csv")
+
+    print(f" {Read_Place_File()} places loaded from places.csv")
     print(""" Menu:  
  L - List Places
  A - Add new place
