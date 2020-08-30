@@ -9,7 +9,6 @@ GitHub URL:
 def main():
 
     print("Travel Tracker 1.0 - by Cooper Plath")
-
     Menu_Input = Display_Menu()
     """Run until the user presses Q"""
     while Menu_Input != "Q":
@@ -28,8 +27,11 @@ def main():
 
 
 
+# def Display_List_Options():
+
 
 def Read_Place_File():
+    # Opens file and counts the amount entries added
     Display_File = open("places.csv", "r")
     Total_List_Items = 0
     for i in Display_File:
