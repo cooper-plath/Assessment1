@@ -15,6 +15,7 @@ def main():
         # List places
         if Menu_Input == "L":
             print("List Places")
+            Display_List_Options()
         # Add new place
         elif Menu_Input == "A":
             print("Add new place")
@@ -27,7 +28,7 @@ def main():
 
 
 
-# def Display_List_Options():
+def Display_List_Options():
 
 
 def Read_Place_File():
