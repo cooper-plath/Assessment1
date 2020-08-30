@@ -7,12 +7,28 @@ GitHub URL:
 
 
 def main():
+
     print("Travel Tracker 1.0 - by Cooper Plath")
     Menu_Input = Display_Menu()
-    print(Menu_Input)
+
+
+
+def Read_Place_File():
+    Display_File = open("places.csv", "r")
+    Total_List_Items = 0
+    for i in Display_File:
+        Total_List_Items += 1
+    Display_File.close()
+    return Total_List_Items
+
+
+
+
 
 
 def Display_Menu():
+    File_Amount = Read_Place_File()
+    print(f" {File_Amount} places loaded from places.csv")
     print(""" Menu:  
  L - List Places
  A - Add new place
