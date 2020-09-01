@@ -67,11 +67,12 @@ def Display_Menu():
  M - Mark a place as visited
  Q - Quit""")
 
-    Menu_Input = str(input(" >>> "))
-    while Menu_Input.isalpha() == False:
+    Menu_Input = str(input(" >>> ").upper())
+    Program_Key_List = ['L', 'A', 'M', 'Q']
+    while not Menu_Input in Program_Key_List:
         print("Invalid")
-        Menu_Input = str(input(" >>> "))
-    return Menu_Input.upper()
+        Menu_Input = str(input(" >>> ").upper())
+    return Menu_Input
 
 
 
