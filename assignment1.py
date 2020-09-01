@@ -34,9 +34,9 @@ def Display_List_Options():
     Display_File = open("places.csv")
     Total = 1
     for line in range(Read_Place_File()):
-        File_List = []
         line = Display_File.readline().strip().split(',')
-        print(f"  {Total}. {line[0]} in {line[1]} priority {line[2]}")
+        print(f"  {Total}. {line[0]:10} in {line[1]:12} priority {line[2]:3}")
+        # print(" {:}. {} in {} priority {}".format(Total, line[0], line[1], line[2]))
         Total += 1
 
 # def Print_File_List(File_List):
