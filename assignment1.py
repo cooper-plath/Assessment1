@@ -21,6 +21,8 @@ def main():
         # Add new place
         elif Menu_Input == "A":
             print("Add new place")
+            Add_New_Place()
+            break
         # Mark a place as visited
         elif Menu_Input == "M":
             print("Mark a place as visited")
@@ -30,19 +32,16 @@ def main():
 
 
 
+
 def Display_List_Options():
     Display_File = open("places.csv")
     Total = 1
     for line in range(Read_Place_File()):
         line = Display_File.readline().strip().split(',')
-        print(f"  {Total}. {line[0]:10} in {line[1]:12} priority {line[2]:3}")
+        line[2] = int(line[2])
+        print(f"  {Total}. {line[0]:10} in {line[1]:12} priority {line[2]:2}")
         # print(" {:}. {} in {} priority {}".format(Total, line[0], line[1], line[2]))
         Total += 1
-
-# def Print_File_List(File_List):
-#     for i in File_List:
-#         print()
-
 
 def Read_Place_File():
     # Opens file and counts the amount entries added
@@ -52,11 +51,6 @@ def Read_Place_File():
         Total_List_Items += 1
     Display_File.close()
     return Total_List_Items
-
-
-
-
-
 
 def Display_Menu():
 
@@ -74,8 +68,31 @@ def Display_Menu():
         Menu_Input = str(input(" >>> ").upper())
     return Menu_Input
 
+def Add_New_Place():
+    Display_File = open("places.csv", "a")
+    Location_Input = str(input("Name: ").capitalize())
+    while len(Location_Input) <= 0:
+        print("Input cannot be blank")
+        Location_Input = str(input("Name: ").capitalize())
+    Country_Input = str(input("Country: ").capitalize())
+    while len(Country_Input) <= 0:
+        print("Input cannot be blank")
+        Country_Input = str(input("Name: ").capitalize())
+    Priority_Input = int(input("Priority: "))
 
 
+
+    """Where I finished"""
+    while not Priority_Input:
+
+
+
+
+        print("Number must be > 0")
+        Priority_Input = int(input("Priority: "))
+    print(f"{Location_Input} in {Country_Input} (priority {Priority_Input}) added to Travel Tracker")
+    Display_File.write('\n')
+    Display_File.write(f"{Location_Input},{Country_Input},{Priority_Input}")
 
 
 main()

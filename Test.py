@@ -15,13 +15,16 @@ import csv
 # Line = Display_File.readline().strip().split(',')
 
 
-Display_File = open('places.csv')
-# Line = Display_File.readline().strip().split(',')
-# print(Line)
-Total = 1
-for line in range(3):
-    File_List = []
-    line = Display_File.readline().strip().split(',')
-    print(f"{Total}. {line[0]} in {line[1]} priority {line[2]}")
-    Total += 1
+# Display_File = open('places.csv')
+# # Line = Display_File.readline().strip().split(',')
+# # print(Line)
+# Total = 1
+# for line in range(3):
+#     File_List = []
+#     line = Display_File.readline().strip().split(',')
+#     print(f"{Total}. {line[0]} in {line[1]} priority {line[2]}")
+#     Total += 1
+
+
+
 
