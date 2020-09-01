@@ -16,6 +16,8 @@ def main():
         if Menu_Input == "L":
             print("List Places")
             Display_List_Options()
+            Menu_Input = Display_Menu()
+            break
         # Add new place
         elif Menu_Input == "A":
             print("Add new place")
@@ -29,6 +31,17 @@ def main():
 
 
 def Display_List_Options():
+    Display_File = open("places.csv")
+    Total = 1
+    for line in range(Read_Place_File()):
+        File_List = []
+        line = Display_File.readline().strip().split(',')
+        print(f"  {Total}. {line[0]} in {line[1]} priority {line[2]}")
+        Total += 1
+
+# def Print_File_List(File_List):
+#     for i in File_List:
+#         print()
 
 
 def Read_Place_File():
