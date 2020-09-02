@@ -22,7 +22,7 @@ def main():
         elif Menu_Input == "A":
             print("Add new place")
             Add_New_Place()
-            break
+            Menu_Input = Display_Menu()
         # Mark a place as visited
         elif Menu_Input == "M":
             print("Mark a place as visited")
@@ -70,28 +70,48 @@ def Display_Menu():
 
 def Add_New_Place():
     Display_File = open("places.csv", "a")
-    Location_Input = str(input("Name: ").capitalize())
-    while len(Location_Input) <= 0:
-        print("Input cannot be blank")
-        Location_Input = str(input("Name: ").capitalize())
-    Country_Input = str(input("Country: ").capitalize())
-    while len(Country_Input) <= 0:
-        print("Input cannot be blank")
-        Country_Input = str(input("Name: ").capitalize())
+    Location = Location_Error_Checking()
+    Country = Country_Error_Checking()
     Priority_Input = Integer_Error_Checking()
-    print(f"{Location_Input} in {Country_Input} (priority {Priority_Input}) added to Travel Tracker")
+    print(f"{Location} in {Country} (priority {Priority_Input}) added to Travel Tracker")
     Display_File.write('\n')
-    Display_File.write(f"{Location_Input},{Country_Input},{Priority_Input}")
+    Display_File.write(f"{Location},{Country},{Priority_Input}, {str('n')}")
 
 
 def Integer_Error_Checking():
-    Valid_Entry = False
-    while not Valid_Entry:
+    valid_integer = False
+    while not valid_integer:
         try:
             Priority_Input = int(input("Number?: "))
-            Valid_Entry = True
+            valid_integer = True
         except ValueError:
             print("Not a number")
     return Priority_Input
+
+def Location_Error_Checking():
+    Valid_Entry = False
+    while not Valid_Entry:
+        Location_Input = str(input("Name?: "))
+        if len(Location_Input) <= 0:
+            print("Can't be blank")
+        elif Location_Input.isalpha() == False:
+            print("Can't be a number")
+        else:
+            Valid_Entry = True
+
+    return Location_Input.capitalize()
+
+def Country_Error_Checking():
+    Valid_Entry = False
+    while not Valid_Entry:
+        Country_Input = str(input("Country?: "))
+        if len(Country_Input) <= 0:
+            print("Can't be blank")
+        elif Country_Input.isalpha() == False:
+            print("Can't be a number")
+        else:
+            Valid_Entry = True
+
+    return Country_Input.capitalize()
 
 main()
