@@ -78,21 +78,20 @@ def Add_New_Place():
     while len(Country_Input) <= 0:
         print("Input cannot be blank")
         Country_Input = str(input("Name: ").capitalize())
-    Priority_Input = int(input("Priority: "))
-
-
-
-    """Where I finished"""
-    while not Priority_Input:
-
-
-
-
-        print("Number must be > 0")
-        Priority_Input = int(input("Priority: "))
+    Priority_Input = Integer_Error_Checking()
     print(f"{Location_Input} in {Country_Input} (priority {Priority_Input}) added to Travel Tracker")
     Display_File.write('\n')
     Display_File.write(f"{Location_Input},{Country_Input},{Priority_Input}")
 
+
+def Integer_Error_Checking():
+    Valid_Entry = False
+    while not Valid_Entry:
+        try:
+            Priority_Input = int(input("Number?: "))
+            Valid_Entry = True
+        except ValueError:
+            print("Not a number")
+    return Priority_Input
 
 main()
