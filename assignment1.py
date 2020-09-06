@@ -35,48 +35,23 @@ def main():
 
 
 def Display_List_Options():
-    # Display_File = open("places.csv")
-    # Total = 1
-    # for line in range(Read_Place_File()):
-    #     line = Display_File.readline().strip().split(',')
-    #     line[2] = int(line[2])
-    #     if line[3] == 'n':
-    #         print(f"  *{Total}. {line[0]:10} in {line[1]:12} priority {line[2]:2}")
-    #     else:
-    #         print(f"   {Total}. {line[0]:10} in {line[1]:12} priority {line[2]:2}")
-    #     # print(" {:}. {} in {} priority {}".format(Total, line[0], line[1], line[2]))
-    #     Total += 1
-
-
-
-
     Display_File = open("places.csv")
     File_List = []
-    for line in range(Display_File):
-        line = Display_File.readline().strip().split(',')
+    for line in range(3):
+        line = Display_File.readline().strip()
+        File_List.append(line)
+    List_Item = 0
+    Row_In_List = 1
+    for i in range(Read_Place_File()):
+        Line_Parts = File_List[List_Item].split(',')
+        Line_Parts[2] = int(Line_Parts[2])
+        if Line_Parts[3] == 'n':
+            print(f"*{Row_In_List}. {Line_Parts[0]} in {Line_Parts[1]} priority {Line_Parts[2]}")
+        else:
+            print(f" {Row_In_List}. {Line_Parts[0]} in {Line_Parts[1]} priority {Line_Parts[2]}")
+        Row_In_List += 1
+        List_Item += 1
 
-        File_List.append(Display_File.readline().strip())
-    Each_Line = 0
-    # for a in range(Read_Place_File()):
-    #     print(File_List[Each_Line])
-    #     Each_Line += 1
-    for a in range(Read_Place_File()):
-        Individual_List_Item = File_List[Each_Line].split(',')
-        print(" {:}. {} in {} priority {}".format(Each_Line, Individual_List_Item[0], Individual_List_Item[1], Individual_List_Item[2]))
-        Each_Line += 1
-
-
-
-
-
-
-
-    # Split_List_Item = File_List[0].split(',')
-    # print(Split_List_Item[2])
-    # Total = 0
-    # for i in range(3):
-    #     print(File_List[Total])
-    #     Total += 1
 
 
 def Read_Place_File():
