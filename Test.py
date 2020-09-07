@@ -170,51 +170,62 @@ import csv
 
 # main()
 
+#
+# def Main():
+#     Display_File = open("places.csv")
+#     File_List = []
+#     for line in range(3):
+#         line = Display_File.readline().strip()
+#         File_List.append(line)
+#     Name_Length = Find_Name_String_Length(File_List)
+#     Location_Length = Find_Location_String_Length(File_List)
+#     Row_In_List = 1
+#     Split_Line = 0
+#     for a in range(3):
+#         Line_Parts = File_List[Split_Line].split(',')
+#         Line_Parts[2] = int(Line_Parts[2])
+#         print(
+#             f"{Row_In_List}. {Line_Parts[0]:{Name_Length}} in {Line_Parts[1]:{Location_Length}} priority {Line_Parts[2]}")
+#         Split_Line += 1
+#         Row_In_List += 1
+#
+#
+#
+# def Find_Name_String_Length(File_List):
+#     File_List_Entry = 0
+#
+#     Max_Name_String = 0
+#     for i in range(3):
+#         Line_Parts = File_List[File_List_Entry].split(',')
+#         if len(Line_Parts[0]) > Max_Name_String:
+#             Max_Name_String = len(Line_Parts[0])
+#         File_List_Entry += 1
+#     return Max_Name_String
+#
+#
+# def Find_Location_String_Length(File_List):
+#     File_List_Entry = 0
+#
+#     Max_Location_String = 0
+#     for i in range(3):
+#         Line_Parts = File_List[File_List_Entry].split(',')
+#         if len(Line_Parts[1]) > Max_Location_String:
+#             Max_Location_String = len(Line_Parts[1])
+#         File_List_Entry += 1
+#     return Max_Location_String
+#
+# Main()
+#
+# #
+# def Extract(Places_List):
+#     return [item[0] for item in Places_List]
+#
 
-def Main():
-    Display_File = open("places.csv")
-    File_List = []
-    for line in range(3):
-        line = Display_File.readline().strip()
-        File_List.append(line)
-    Name_Length = Find_Name_String_Length(File_List)
-    Location_Length = Find_Location_String_Length(File_List)
-    Row_In_List = 1
-    Split_Line = 0
-    for a in range(3):
-        Line_Parts = File_List[Split_Line].split(',')
-        Line_Parts[2] = int(Line_Parts[2])
-        print(
-            f"{Row_In_List}. {Line_Parts[0]:{Name_Length}} in {Line_Parts[1]:{Location_Length}} priority {Line_Parts[2]}")
-        Split_Line += 1
-        Row_In_List += 1
-
-
-
-def Find_Name_String_Length(File_List):
-    File_List_Entry = 0
-
-    Max_Name_String = 0
-    for i in range(3):
-        Line_Parts = File_List[File_List_Entry].split(',')
-        if len(Line_Parts[0]) > Max_Name_String:
-            Max_Name_String = len(Line_Parts[0])
-        File_List_Entry += 1
-    return Max_Name_String
-
-
-def Find_Location_String_Length(File_List):
-    File_List_Entry = 0
-
-    Max_Location_String = 0
-    for i in range(3):
-        Line_Parts = File_List[File_List_Entry].split(',')
-        if len(Line_Parts[1]) > Max_Location_String:
-            Max_Location_String = len(Line_Parts[1])
-        File_List_Entry += 1
-    return Max_Location_String
-
-Main()
+# Display_File = open("places.csv")
+# Total = 0
+# for line in Display_File:
+#     Total += 1
+# print(Total)
 
 
 
@@ -223,6 +234,159 @@ Main()
 
 
 
+
+
+
+
+
+
+
+Display_File = open("places.csv")
+Places_List = []
+for line in range(3):
+    line = Display_File.readline().strip()
+    Line_Parts = line.split(',')
+    Line_Parts[2] = int(Line_Parts[2])
+    Places_List.append(Line_Parts)
+print(Places_List)
+print(Places_List[0][0][0])
+Places_List.insert([0][0][0], '*')
+print(Places_List)
+# Row_In_List = 1
+# New_Line_In_List = 0
+# for i in range(3):
+#     if Places_List[New_Line_In_List][3] == 'n':
+#         Places_List.insert([New_Line_In_List][0][0], '*')
+#
+#
+#         # print(
+#         #     f" {Row_In_List}. {Places_List[New_Line_In_List][0]} in {Places_List[New_Line_In_List][1]} priority {Places_List[New_Line_In_List][2]}")
+#     Row_In_List += 1
+#     New_Line_In_List += 1
+# print(Places_List[0])
+
+# # # print(Extract(Places_List)[1])
+# # Total_List_Items = 0
+# # for i in Places_List:
+# #     Total_List_Items += 1
+# # print(Total_List_Items)
+# print(len(Places_List))
+# # File_List_Entry = 0
+#
+# Max_Name_String = 0
+# for i in range(3):
+#     print(f"Line parts: {Line_Parts}")
+#     if len(Places_List[File_List_Entry][0]) > Max_Name_String:
+#         Max_Name_String = len(Places_List[File_List_Entry][0])
+#     File_List_Entry += 1
+# print(Max_Name_String)
+
+
+# def main():
+#     Display_File = open("places.csv")
+#     Places_List = []
+#     for line in range(3):
+#         line = Display_File.readline().strip()
+#         Line_Parts = line.split(',')
+#         Line_Parts[2] = int(Line_Parts[2])
+#         Places_List.append(Line_Parts)
+#     print(Places_List)
+#     Total = 0
+#     # In_List = False
+#     # Priority_Input = int(input("Number?: "))
+#     # for i in range(3):
+#     #     if Priority_Input in Places_List[Total]:
+#     #         In_List = True
+#     #     else:
+#     #         Total += 1
+#     # print(In_List)
+#
+#
+#
+#     Number_Input = Error_Check_Priority_Input(Places_List)
+#     print(Number_Input)
+#
+#
+#
+#
+#
+#
+# def Check_Priority_In_List(Priority_Input, Places_List):
+#
+#     Input_In_List = False
+#     total = 0
+#     for i in range(3):
+#         if Priority_Input in Places_List[total]:
+#             Input_In_List = True
+#
+#         else:
+#             total += 1
+#     return Input_In_List
+#
+#
+#
+#
+# def Error_Check_Priority_Input(Places_List):
+#     valid_integer = False
+#     while not valid_integer:
+#         try:
+#             Priority_Input = int(input("Number?: "))
+#             if Priority_Input <= 0:
+#                 print("Number must be > 0")
+#             else:
+#                 Input_In_List = Check_Priority_In_List(Priority_Input, Places_List)
+#                 if Input_In_List == True:
+#                     print("Invalid place number")
+#                 else:
+#                     valid_integer = True
+#
+#         except ValueError:
+#             print("Invalid input; enter a valid number")
+#     return Priority_Input
+
+#     valid_integer = False
+#     Input_In_List = False
+#     while not Input_In_List:
+#         while not valid_integer:
+#
+#             try:
+#                 Priority_Input = int(input("Number?: "))
+#                 if Priority_Input <= 0:
+#                     print("Number must be > 0")
+#                 else:
+#                     valid_integer = True
+#             except ValueError:
+#                 print("Invalid input; enter a valid number")
+#         Yes = Check_If_Input_In_List(Priority_Input, Places_List)
+#         if Yes == False:
+#             Input_In_List = True
+
+
+
+# main()
+
+# while not valid:
+#         if Priority_Input in Places_List[Total]:
+#             print("Invalid")
+#             Priority_Input = int(input("Number?: "))
+#             Total += 1
+#         else:
+#             print("Worked")
+#             valid = True
+
+
+
+# valid = False
+# while not valid:
+#     if Priority_Input < 0:
+#         print("Invalid input; enter a valid number")
+#     elif len(Priority_Input) == 0:
+#         print("Can't be blank")
+#     elif Priority_Input in Places_List:
+#         print("That place is already visited")
+#     else:
+#         valid = True
+# print(f"It worked: {Priority_Input}")
 
 # print(Max_Location_String)
 # print(Max_Name_String)
