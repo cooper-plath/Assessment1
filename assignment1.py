@@ -2,15 +2,17 @@
 Replace the contents of this module docstring with your own details
 Name: Cooper Plath
 Date started: 30-8-20
-GitHub URL:
+GitHub URL: https://github.com/cooper-plath/Assessment1
 """
 
 
 def main():
     Display_File = open("places.csv")
     Places_List = []
+    # Reads places.csv file and adds information to list
     Add_File_Contents_To_List(Display_File, Places_List)
     print("Travel Tracker 1.0 - by Cooper Plath")
+
     Total_List_Items(Places_List)
 
     print(f" {Total_List_Items(Places_List)} places loaded from places.csv")
@@ -44,6 +46,7 @@ def Add_File_Contents_To_List(Display_File, Places_List):
 
 
 def Display_List_Options(Places_List):
+    # Finds longest 'name' and 'location' strings as to dynamically format list
     Name_Length = Find_Name_String_Length(Places_List)
     Location_Length = Find_Location_String_Length(Places_List)
     Row_In_List = 1
@@ -66,6 +69,7 @@ def Display_List_Options(Places_List):
 def Find_Name_String_Length(Places_List):
     File_List_Entry = 0
     Max_Name_String = 0
+    # Runs through each sublist in global list and to find longest string entry
     for i in range(Total_List_Items(Places_List)):
         if len(Places_List[File_List_Entry][0]) > Max_Name_String:
             Max_Name_String = len(Places_List[File_List_Entry][0])
@@ -82,6 +86,7 @@ def Find_Location_String_Length(Places_List):
     return Max_Location_String
 
 def Total_List_Items(Places_List):
+    # Counts how many entries are in list
     Total_List_Items = len(Places_List)
     return Total_List_Items
 
@@ -95,6 +100,7 @@ def Display_Menu():
 
     Menu_Input = str(input(" >>> ").upper())
     Program_Key_List = ['L', 'A', 'M', 'Q']
+    # Error checking that user inputs correct key to navigate menu
     while not Menu_Input in Program_Key_List:
         print("Invalid menu choice")
         Menu_Input = str(input(" >>> ").upper())
@@ -105,17 +111,33 @@ def Add_New_Place(Places_List):
     Country = Country_Error_Checking()
     Priority_Input = Integer_Error_Checking(Places_List)
     print(f"{Location} in {Country} (priority {Priority_Input}) added to Travel Tracker")
-
+    # Inserts new sublist at beginning of global list once user enters correct information
     Places_List.insert(0, [Location, Country, Priority_Input, "n"])
 
 
 def Mark_Place_As_Visited(Places_List):
     Display_List_Options(Places_List)
-    print(" Mark the number of a place to mark as visited")
-    Mark_Visited = Mark_Visited_Input_Error_Check(Places_List)
-    print(f" {Places_List[Mark_Visited][0]} in {Places_List[Mark_Visited][1]} visited!")
-    Places_List[Mark_Visited][-1] = 'v'
+    # Checks if all locations have been visited already, prints message
+    All_Visited = Check_If_Locations_Are_Visited(Places_List)
+    if All_Visited == True:
+        print(" No unvisited places")
+    else:
+        print(" Mark the number of a place to mark as visited")
+        Mark_Visited = Mark_Visited_Input_Error_Check(Places_List)
+        print(f" {Places_List[Mark_Visited][0]} in {Places_List[Mark_Visited][1]} visited!")
+        # Once user marks location as visited, sublist element -1 is marked as visited
+        Places_List[Mark_Visited][-1] = 'v'
 
+def Check_If_Locations_Are_Visited(Places_List):
+    # Runs through each sublist and checks if 'n', not visited is still in list
+    New_Row = 0
+    All_Visited = True
+    for i in range(Total_List_Items(Places_List)):
+        if 'n' in Places_List[New_Row][-1]:
+            All_Visited = False
+        else:
+            New_Row += 1
+    return All_Visited
 
 
 def Mark_Visited_Input_Error_Check(Places_List):
@@ -163,6 +185,7 @@ def Integer_Error_Checking(Places_List):
     return Priority_Input
 
 def Check_Priority_In_List(Priority_Input, Places_List):
+    # Checks that priority input isn't identical to element in list
     Input_In_List = False
     Next_Row = 0
 
@@ -176,6 +199,7 @@ def Check_Priority_In_List(Priority_Input, Places_List):
 
 
 def Check_Location_In_List(Location_Input, Places_List):
+    # Checks that location input isn't identical to element in list
     Location_In_List = False
     Next_Row = 0
     for i in range(Total_List_Items(Places_List)):
@@ -188,6 +212,7 @@ def Check_Location_In_List(Location_Input, Places_List):
 
 
 def Location_Error_Checking(Places_List):
+    # Error checking that str input isn't an integer or blank. Than checks if location is already in list
     Valid_Entry = False
     while not Valid_Entry:
         Location_Input = str(input("Name?: "))

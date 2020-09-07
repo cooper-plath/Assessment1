@@ -248,10 +248,16 @@ for line in range(3):
     Line_Parts = line.split(',')
     Line_Parts[2] = int(Line_Parts[2])
     Places_List.append(Line_Parts)
+
 print(Places_List)
-print(Places_List[0][0][0])
-Places_List.insert([0][0][0], '*')
-print(Places_List)
+New_Row = 0
+All_Visited = True
+for i in range(3):
+    if 'n' in Places_List[New_Row][-1]:
+        All_Visited = False
+    else:
+        New_Row += 1
+print(All_Visited)
 # Row_In_List = 1
 # New_Line_In_List = 0
 # for i in range(3):
