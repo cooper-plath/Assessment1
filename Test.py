@@ -171,35 +171,56 @@ import csv
 # main()
 
 
-
-Display_File = open("places.csv")
-File_List = []
-
-for line in range(3):
-    line = Display_File.readline().strip()
-    File_List.append(line)
-
-File_List_Entry = 0
-Row_In_List = 1
-Max_Name_String = 0
-Max_Location_String = 0
-for i in range(3):
-    Line_Parts = File_List[File_List_Entry].split(',')
-    Line_Parts[2] = int(Line_Parts[2])
-    if len(Line_Parts[0]) > Max_Name_String:
-        Max_Name_String = len(Line_Parts[0])
-    if len(Line_Parts[1]) > Max_Location_String:
-        Max_Location_String = len(Line_Parts[1])
-    File_List_Entry += 1
+def Main():
+    Display_File = open("places.csv")
+    File_List = []
+    for line in range(3):
+        line = Display_File.readline().strip()
+        File_List.append(line)
+    Name_Length = Find_Name_String_Length(File_List)
+    Location_Length = Find_Location_String_Length(File_List)
+    Row_In_List = 1
+    Split_Line = 0
+    for a in range(3):
+        Line_Parts = File_List[Split_Line].split(',')
+        Line_Parts[2] = int(Line_Parts[2])
+        print(
+            f"{Row_In_List}. {Line_Parts[0]:{Name_Length}} in {Line_Parts[1]:{Location_Length}} priority {Line_Parts[2]}")
+        Split_Line += 1
+        Row_In_List += 1
 
 
-Split_Line = 0
 
-for a in range(3):
-    Line_Parts = File_List[Split_Line].split(',')
-    print(f"{Row_In_List}. {Line_Parts[0]:{Max_Name_String}} in {Line_Parts[1]:{Max_Location_String}} priority {Line_Parts[2]}")
-    Split_Line += 1
-    Row_In_List += 1
+def Find_Name_String_Length(File_List):
+    File_List_Entry = 0
+
+    Max_Name_String = 0
+    for i in range(3):
+        Line_Parts = File_List[File_List_Entry].split(',')
+        if len(Line_Parts[0]) > Max_Name_String:
+            Max_Name_String = len(Line_Parts[0])
+        File_List_Entry += 1
+    return Max_Name_String
+
+
+def Find_Location_String_Length(File_List):
+    File_List_Entry = 0
+
+    Max_Location_String = 0
+    for i in range(3):
+        Line_Parts = File_List[File_List_Entry].split(',')
+        if len(Line_Parts[1]) > Max_Location_String:
+            Max_Location_String = len(Line_Parts[1])
+        File_List_Entry += 1
+    return Max_Location_String
+
+Main()
+
+
+
+
+
+
 
 
 
